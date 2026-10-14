@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple AI chat application with prompt templates and streaming responses." />
+  <title>AI Chat Studio</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>Chat Studio</span></div>
+      <button id="new-chat" class="new-chat">＋ <span>New chat</span></button>
+      <div class="sidebar-label">PROMPT TEMPLATES</div>
+      <button class="template active" data-template="general"><span>✦</span><span><b>General assistant</b><small>Ask anything</small></span></button>
+      <button class="template" data-template="tutor"><span>▤</span><span><b>Study tutor</b><small>Learn step by step</small></span></button>
+      <button class="template" data-template="coding"><span>⌘</span><span><b>Coding helper</b><small>Build and debug</small></span></button>
+      <button class="template" data-template="writing"><span>✎</span><span><b>Writing assistant</b><small>Draft and improve</small></span></button>
+      <div class="sidebar-bottom"><span class="status-dot"></span><span id="connection-status">Checking server…</span></div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div><span class="mobile-brand">✦ Chat Studio</span><span class="mode-pill" id="current-mode">General assistant</span></div>
+        <span class="api-note">Your API key stays on the server</span>
+      </header>
+      <section class="chat-area" id="chat-area" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon">✦</div>
+          <p class="eyebrow">YOUR AI WORKSPACE</p>
+          <h1>What can I help you with?</h1>
+          <p class="welcome-copy">Choose a template, ask a question, and watch the answer arrive in real time.</p>
+          <div class="suggestions">
+            <button data-prompt="Explain REST APIs with a simple real-world example."><span>↗</span><b>Learn a concept</b><small>Explain REST APIs simply</small></button>
+            <button data-prompt="Help me debug a JavaScript function that returns undefined."><span>⌘</span><b>Debug some code</b><small>Find the cause and fix it</small></button>
+            <button data-prompt="Create a 7-day beginner study plan for learning backend development."><span>▦</span><b>Make a plan</b><small>Learn backend development</small></button>
+            <button data-prompt="Improve this sentence to sound professional: I am interested in this job and want to learn."><span>✎</span><b>Improve writing</b><small>Make a sentence professional</small></button>
+          </div>
+        </div>
+        <div id="messages" class="messages"></div>
+      </section>
+      <footer class="composer-wrap">
+        <form id="chat-form" class="composer">
+          <textarea id="message-input" rows="1" maxlength="8000" placeholder="Message Chat Studio…" aria-label="Your message"></textarea>
+          <div class="composer-bottom"><span>AI can make mistakes. Check important information.</span><button id="send-button" type="submit" aria-label="Send message">↑</button></div>
+        </form>
+        <div id="error-banner" class="error-banner" role="alert" hidden></div>
+      </footer>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
